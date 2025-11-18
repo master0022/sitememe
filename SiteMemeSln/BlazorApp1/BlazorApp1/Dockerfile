@@ -11,10 +11,12 @@ COPY . .
 RUN echo "=== BUILD CONTEXT CONTENTS ===" && ls -R .
 
 # Restore
-RUN echo "=== DOTNET RESTORE ===" && dotnet restore
+RUN echo "=== DOTNET RESTORE ===" && dotnet restore SiteMemeSln/BlazorApp1/BlazorApp1/BlazorApp1.csproj
 
-# Publish
-RUN echo "=== DOTNET PUBLISH ===" && dotnet publish -c Release -o /app/out
+RUN echo "=== DOTNET PUBLISH ===" && \
+    dotnet publish SiteMemeSln/BlazorApp1/BlazorApp1/BlazorApp1.csproj \
+    -c Release -o /app/out
+
 
 # DEBUG: Show published result
 RUN echo "=== PUBLISHED FILES ===" && ls -R /app/out
