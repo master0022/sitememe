@@ -13,6 +13,8 @@ namespace BlazorApp1
             builder.Services.AddRazorComponents()
                 .AddInteractiveServerComponents()
                 .AddInteractiveWebAssemblyComponents();
+            builder.Services.AddHttpClient();
+            builder.Services.AddHostedService<KeepAliveService>();
 
             var app = builder.Build();
 
